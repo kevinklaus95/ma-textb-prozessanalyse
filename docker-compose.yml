@@ -1,19 +1,19 @@
 version: '3'
 services:
   masterarbeit-backend:
-    image: masterarbeit-backend
-    container_name: masterarbeit-backend
+    image: ma-textb-prozessanalyse-backend
+    container_name: ma-textb-prozessanalyse-backend
     expose:
      - "8000"
     ports:
      - "8000:8000"
   masterarbeit-frontend:
-    image: masterarbeit-frontend
+    image: ma-textb-prozessanalyse-frontend
     depends_on:
-     - masterarbeit-backend
+     - ma-textb-prozessanalyse-backend
     ports:
      - "3000:3000"
     expose:
      - "3000"
     links:
-     - masterarbeit-backend
+     - ma-textb-prozessanalyse-backend
