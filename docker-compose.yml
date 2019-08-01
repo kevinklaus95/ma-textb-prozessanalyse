@@ -1,0 +1,19 @@
+version: '3'
+services:
+  masterarbeit-backend:
+    image: masterarbeit-backend
+    container_name: masterarbeit-backend
+    expose:
+     - "8000"
+    ports:
+     - "8000:8000"
+  masterarbeit-frontend:
+    image: masterarbeit-frontend
+    depends_on:
+     - masterarbeit-backend
+    ports:
+     - "3000:3000"
+    expose:
+     - "3000"
+    links:
+     - masterarbeit-backend
