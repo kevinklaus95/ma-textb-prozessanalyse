@@ -1,13 +1,19 @@
 version: '3'
 services:
-  masterarbeit-backend:
+  ma-textb-prozessanalyse-backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
     image: ma-textb-prozessanalyse-backend
     container_name: ma-textb-prozessanalyse-backend
     expose:
      - "8000"
     ports:
      - "8000:8000"
-  masterarbeit-frontend:
+  ma-textb-prozessanalyse-frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
     image: ma-textb-prozessanalyse-frontend
     depends_on:
      - ma-textb-prozessanalyse-backend
