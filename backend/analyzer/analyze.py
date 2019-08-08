@@ -86,10 +86,8 @@ class LDADataset:
                 stemmer=stemmer,
                 stopwords=stopwords,
                 positive_filter=positive_text,
-                text=entry['comment']
+                text=entry['comment'] + ' ' + entry['reflection']
             )
-
-            print(word_array)
 
             self.entry_text_dict[id] = word_array
 

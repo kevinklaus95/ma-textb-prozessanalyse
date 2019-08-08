@@ -69,7 +69,7 @@ class MyComponent extends React.Component {
     componentDidMount(){
         axios.get('distinct-project-ids/')
             .then(res => this.setState({caseIdOptions: res.data.project_ids}, () => {
-                this.setState({chosenCaseId: 3, secondCaseId: 7})
+                this.setState({chosenCaseId: 602, secondCaseId: 600})
             }))
             .catch(err => console.log(err));
     }

@@ -10,7 +10,7 @@ from pprint import pprint
 
 @api_view()
 def distinct_project_ids(request):
-    project_ids = Hours.objects.order_by('project_id').values_list('project_id', flat=True).distinct()
+    project_ids = Hours.objects.order_by('-project_id').values_list('project_id', flat=True).distinct()
     return Response({"project_ids": project_ids})
 
 
@@ -33,15 +33,19 @@ def group_for_timespan(hours, timespan, start, end):
     # got the time ranges, can now filter the hours for these time ranges and add the text to the time_ranges to extend the dicts
     for ti in time_ranges:
         temp_hours = hours.filter(start__gte=ti['start'], stop__lte=ti['stop'])
-        text = ''
+        comment_text = ''
+        reflection_text = ''
         for hour in temp_hours:
-            text += str(hour.comment)
-            text += ' '
-        ti['comment'] = text
+            comment_text += str(hour.comment)
+            comment_text += ' '
+            reflection_text += str(hour.reflection)
+            reflection_text += ' '
+
+        ti['comment'] = comment_text
+        ti['reflection'] = reflection_text
         ti['id'] = count
         count += 1
 
-    #pprint(time_ranges)
 
     return time_ranges
 
@@ -56,7 +60,7 @@ def start_analysis(request):
 
     if timespan is 0:
         hours = Hours.objects.filter(project_id=project_id, start__gte=start_date, stop__lte=end_date)\
-            .values('comment', 'id', 'start', 'stop')
+            .values('comment', 'reflection', 'id', 'start', 'stop')
     else:
         hours = group_for_timespan(
             Hours.objects.filter(project_id=project_id, start__gte=start_date, stop__lte=end_date), timespan,
@@ -80,7 +84,6 @@ def start_analysis(request):
                          positive_text='')
 
     return Response(
-        # {'hours': hours, 'lda_result': mock_lda, 'dictionary_result': mock_dict})
         {'hours': hours,
          'lda_result': result['lda_result'],
          'dictionary_result': result['dictionary_result'],
@@ -95,7 +98,7 @@ def start_custom_analysis(request):
     config = request.data.get('config', {})
     custom_text = request.data.get('customText', '')
 
-    result = analyze([{'id': 1, 'comment': custom_text}],
+    result = analyze([{'id': 1, 'comment': custom_text, 'reflection': ''}],
                          dirichlet_alpha=float(config['dirichletAlpha']),
                          dirichlet_eta=float(config['dirichletEta']),
                          n_topics=int(config['numberOfTopics']),
@@ -113,7 +116,7 @@ def start_custom_analysis(request):
                          positive_text='')
 
     return Response(
-        {'hours': [{'id': 0, 'comment': custom_text}],
+        {'hours': [{'id': 0, 'comment': custom_text, 'reflection': ''}],
          'lda_result': result['lda_result'],
          'dictionary_result': result['dictionary_result'],
          'warm_words': result['warm_words'],
