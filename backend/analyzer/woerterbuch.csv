@@ -1,164 +1,189 @@
 Warm,Kalt
-aggressiv,*-Störung
-aktiv,*-Therapie
-aktive Kooperation,abnorm
-ambivalent,abnorme Beziehungsmuster
-anders,abnormes Beziehungsmuster
+aktiv,*-Störung
+aktive Kooperation,*-Therapie
+ambivalent,abnorm
+anbieten,abnorme Beziehungsmuster
+anders,absagen
 anders hörend,Abstand
-Angebot,Abstand von ihr
-angemessen,aggressiv
-angenommen,aggressiv oppositionell
-Angst,Aktionstherapie
-anhaltend,am Rande
-aufgehen,ambivalent emotional
-aufgeschlossen,Ambulanz
-ausdrücklich,Anforderung
-aushalten,antriebsarm
-begegnen,arbeiten
-begleitet,Arbeitshaltung
-bemüht,auffiel
-benötigen,Aufmerksamkeitsstörung
-besonderes Potential,ausdrücklich
-besonders,ausführlich
-besuchen,ausgeschlossen
-Beziehung,Ausnahmen
-Bildungsoption,Ausschluss
-Bildungsort,auszuhalten
-Blickkontakt,Behandlung
-darf,bemängelt
-darf begegnen,bemühen
-darf dazugehören,bemüht
-Dialog,Bemühung
-direkt,benötigend
-Distanz,besprochen
-distanziert,betreut
-dramatisch,Bewertung
-dünnhäutig,Beziehungsmuster
-eigene Normalität,Bezug
-ein Mädchen,Bezug auf Beziehungen
-ein Teil von,Bezugsperson
-einlassen,Bildungsoption
-Einvernehmen,Bildungsoptionen
-emotional,Bindungsstörung
-engagiert,deutlich
-enthemmend,deutlich ambivalent
-Entstehungsprozess,Diagnose
-erfolgreich,direkt
-erhalten,distanziert
-Erwartungen,dramatisch
-Feedback,dünnhäutig
-frei,einfache Aktivitätsstörung
-friedlich,eingeschränkt
-friedliche Zuversicht,Einvernehmen
-geduldig,EInzelkontakt
-geduldig beantwortet,Einzelkontakte
-gefördert,Epikrise
-geistige Ressourcen,Ergebnis
-gemeinsam,erläutert
-gemeinsam spielen,erledigen
-gemeinsames Gespräch,Erwartung
-gesteigert,Erwartungen
-gewachsen,etablieren
-gut,festigt
-gute,gegen
-gute Neuigkeiten,gegenwärtige
-gute Verbindung,geistig
-guter Umgang,Grenzen überschreiten
-im Blick behalten,Hintergrund
-im Interesse,impulsiv
-impulsiv,in der Lage
-integrieren,informierend
-intellektuell,insgesamt weigehend positiv
-intensiv,Integrationshilfe
-Interesse,integrieren
-kein leichter Prozess,intensiv
-konstruktiv,Interaktionstherapie
-Kontakt,intervenieren
-konzentriert,Intervention
-Kooperation,kann nicht angenommen werden
-körperliche Nähe,Kinder und Jugendpsychatrisch
-korrekt,Kindesalter
-kümmern,klar
-Kunst,klare Reaktion
-leicht,Klassenleiterin
-Lernerfahrung,Kommunikation
-lösend,konsequent
-Möglichkeiten,konzentriert
-Motivation,kümmern
-müde,Laufbahn
-Musiktherapeutisch,Leistung
-Musiktherapie,Leistungsanforderung
-nah,Leistungsergebnisse
-Nähe,Leistungsniveau
-offen,Leistungspotential
-pflegerisch,Mädchen
-positiv,medikamentös
-primäre Bezugsperson,Medikinet
-problemlos,melden
-produktiv,methylphinidad
-Pubertät,Minderstörung
-Rahmen,müde
-reagieren,multimodal
-Reaktion,multimodales Behandlungssetting
-regelmäßig,Mutter in Therapie integrieren
-regelmäßig anhaltend,Mutter/Kind-Interaktionstherapie
-schien,Nachbehandlung
-schnell,Nachteil
-schulmeidend,Nachteilsausgleich
-sichtbar,nachvollziehbar
-sichtbar werden,offensichtlich
-spieltherapeutisch,ohne
-sprechen,oppositionell
-stark eingeschränkt,Organisation
-steht zur Verfügung,organisiert
-Störung,Ort
-suchen,Pflegemutter
-Tanz,pflegerisch pädagogisch
-teilnehmen,planen
-transparent,positiv
-Umgang,primär
-Unsicherheit,primäre Bezugsperson
-Unterstützung,produktiv
-Verbindung,psychiatrisch
-vermögen,psychobehandlung
-verstanden,psychotherapeutisch
-vielfältig,Rahmen
-Vorbehalte,Rahmen
-wachsen lassen,Rahmen gesteckt
-wahllos,Rahmenbedingung
-wirkend,reaktive Bindungsstörung
-Wohlempfinden,Regelklasse
-Zeit nehmen,regelmäßig
-zerrissen,Regeln
-zur Verfügung,relativ einfach
-zur Verfügung stehen,retard
-zurückhaltend,Rolle
-Zusammenarbeit,Sachstandsbericht
-Zuversicht,schlägt schlagartig
-zwischen den Stühlen,schnell
-,Schulleiter
-,schulmeidend
-,Setting
-,sichergestellt
-,sichergestellt schnell zu reagieren
-,sichtbar
-,sie erhielt Therapie
-,Sitzordnung
-,Sitzordnung organisiert
-,spieltherapeutisch
-,stationär
-,störend
-,Therapie
-,Therapien
-,überschreiten
-,Umgang
+Angebot,aggressiv
+Angebote,Akteure
+angenommen,Aktionstherapie
+anhaltend,Alltag
+annehmen,altersgerecht
+aufgeschlossen,am Rande
+aufmerksam,ambivalent emotional
+ausbilden,Ambulanz
+ausgeglichen,Anforderung
+aushalten,anleiten
+ausprobieren,Anleitung
+Austausch,antriebsarm
+bedanken,Arbeit
+Bedürfnisse,arbeiten
+begegnen,Arbeitshaltung
+begleiten,auffiel
+begleitet,Aufmerksamkeitsstörung
+Begleitung,ausdrücklich
+Beisein,ausführlich Zeit
+benötigen,ausgeschlossen
+besonderes Potential,Ausnahmen
+besonders,Ausrichtung
+besprechen,Aussage
+besuchen,Ausschluss
+Beziehung,auszuhalten
+bilden,Bedarf
+Bildungsoption,Behandlung
+Bildungsort,bemängelt
+Bildungsweg,bemühen
+darf,bemüht
+darf begegnen,Bemühung
+darf dazugehören,benötigend
+Dialog,Beratungsbedarf
+eigene Normalität,besprochen
+ein Mädchen,betreut
+ein Teil von,Bewertung
+einlassen,Beziehungsmuster
+emotional,Bezug
+Empfindung,Bezug auf Beziehungen
+engagiert,Bezugsperson
+entgegenbringen,Bildungsoptionen
+enthemmend,Bindungsstörung
+Entlastung,deutlich
+Entstehungsprozess,deutlich ambivalent
+entwickeln,Diagnose
+erfolgen,direkt
+erfolgreich,distanziert
+erhalten,dramatisch
+ermöglichen,dünnhäutig
+ermöglichen,einfache Aktivitätsstörung
+familiär,eingeschränkt
+fortführen,einhalten
+fortgeführt,Einvernehmen
+freundlich,EInzelkontakt
+friedlich,Einzelkontakte
+friedliche Zuversicht,entschärfen
+fröhlich,Epikrise
+fröhlicher,Ergebnis
+ganz normal,erläutert
+geduldig,erledigen
+gefördert,Erwartung
+geistige Ressourcen,Erwartungen
+gemeinsam,etablieren
+gemeinsam spielen,festigt
+gemeinsames Gespräch,gegen
+gern,gegenwärtige
+Gesundheit,geistig
+gewohnt,gekoppelt
+Grüße,Grenzen
+gut,Grenzen überschreiten
+Gut,Grenzsetzung
+gut,Haltung
+gut tun,Helfersystem
+gute,Herausforderung
+gute Gründe,Hintergrund
+gute Neuigkeiten,in der Lage
+gute Verbindung,informierend
+gute Zusammenarbeit,inhaltliche Ausrichtung
+guter Umgang,insgesamt weigehend positiv
+Helfer,Integrationshilfe
+Hilfe,Interaktionstherapie
+hohes Gut,intervenieren
+im Blick behalten,Intervention
+im Interesse,kann nicht angenommen werden
+impulsiv,kein
+integrieren,keine
+intellektuell,Kinder und Jugendpsychatrisch
+intensiv,Kindesalter
+Interesse,klar
+Interessen,klare Reaktion
+interessiert,Klassenleiterin
+kein leichter Prozess,Kommunikation
+Kolleginnen,Kompetenzen
+konstruktiv,Konkurrenzverhalten
+Kontakt,konsequent
+Kontakte,kontinuierlich
+konzentriert,Konzeption
+Kooperation,Kurzbericht
+körperliche Nähe,Laufbahn
+korrekt,Leistung
+kümmern,Leistungsanforderung
+leicht,Leistungsergebnisse
+lernen,Leistungsniveau
+Lernerfahrung,Leistungspotential
+lösend,Mädchen
+Lösungsidee,medikamentös
+möchten,Medikinet
+Möglich,melden
+möglich,methylphinidad
+möglicher,Minderstörung
+Möglichkeit,müde
+Möglichkeiten,multimodal
+Motivation,multimodales Behandlungssetting
+Musiktherapeutisch,Mutter in Therapie integrieren
+nachhaltig,Mutter/Kind-Interaktionstherapie
+nah,Nachbehandlung
+Nähe,Nachteil
+nutzen,Nachteilsausgleich
+offen,nachvollziehbar
+Offenheit,offensichtlich
+Pause,ohne
+pflegerisch,oppositionell
+positiv,Organisation
+primäre Bezugsperson,organisiert
+problemlos,Ort
+produktiv,pendeln
+reagieren,Person
+Reaktion,Pflegemutter
+reger,pflegerisch pädagogisch
+respektieren,planen
+Ressourcen,primär
+Rhythmus,psychiatrisch
+schafft,psychobehandlung
+schien,psychotherapeutisch
+schnell,Rahmen
+sichtbar,Rahmen gesteckt
+sichtbar werden,Rahmenbedingung
+sinnvoll,rauskommen
+spieltherapeutisch,reaktive Bindungsstörung
+sprechen,Regelklasse
+steht zur Verfügung,regelmäßig
+suchen,Regeln
+transparent,relativ einfach
+Unterstützung,retard
+Unterstützungsmöglichkeiten,Rolle
+Verbindung,Sachstandsbericht
+vermögen,schlägt schlagartig
+verstanden,Schuljahr
+vertrauensvoll,Schulleiter
+vielfältig,schulmeidend
+wachsen lassen,selbstverletzend
+weiter,Setting
+weiterentwickeln,sichergestellt
+weitergeführt,sichergestellt schnell zu reagieren
+wertschätzen,Sichtweise
+wirkend,Sichtweisen
+Wohlempfinden,sie erhielt Therapie
+wunderbar,Sitzordnung
+Wunsch,Sitzordnung organisiert
+wünschen,Stand
+Ziel,stationär
+zueinander,störend
+zur Verfügung,suizidal
+zur Verfügung stehen,systemisch
+zurückhaltend,Tempo
+zusammen,Thema
+Zusammenarbeit,Therapie
+Zuversicht,Therapien
+zwischen den Stühlen,überschreiten
+zwischenmenschlich,Umgang
 ,umschlagen
 ,Unsicherheiten
+,unterschiedlich
 ,unverzichtbar
 ,Vereinbarung
 ,verhalten
 ,Verlauf
 ,Verlaufskontrolle
+,verschieden
 ,Vorbehalt
 ,Vorbehalte
 ,vorbehalten
@@ -166,11 +191,12 @@ zwischen den Stühlen,schnell
 ,Vormund
 ,Vorurteil
 ,wahllos
-,wahllos wirkend
 ,Weg
 ,wichtig
+,Widerspruch
 ,Wiederholung
 ,Wohlergehen
 ,wüssten
 ,zerrissen
 ,zunehmend
+,zur Kenntnis nehmen
