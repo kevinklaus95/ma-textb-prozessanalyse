@@ -2,10 +2,9 @@ from django.contrib import admin
 
 from .models import Hours
 
-
+# Die Hours Tabelle unter localhost:8000/admin/ sichtbar machen
 class HoursAdmin(admin.ModelAdmin):
-    list_display = ('project_id', 'comment', 'start', 'stop')
+    search_fields = ['project_id']
+    list_display = ('project_id', 'reflection', 'comment', 'start', 'stop')
 
-
-# Register your models here.
 admin.site.register(Hours, HoursAdmin)

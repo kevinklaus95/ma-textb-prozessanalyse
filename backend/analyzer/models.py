@@ -8,6 +8,8 @@
 from django.db import models
 
 
+# Die Models sind mithilfe des Befehls `python manage.py inspectdb > models.py` entstanden und somit autogeneriert.
+
 class AuthGroup(models.Model):
     name = models.CharField(unique=True, max_length=150)
 

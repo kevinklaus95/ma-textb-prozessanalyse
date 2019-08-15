@@ -1,8 +1,9 @@
 import React from 'react';
 import './App.css';
-import MyComponent from './component'
+import Root from './root'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
+// Hier wird die App initialisiert sowie der Material-UI Provider und der Header der App gesetzt.
 function App() {
   return (
     <div className="App">
@@ -10,7 +11,7 @@ function App() {
       <header className="App-header">
         Textbasierte Prozessanalyse
       </header>
-      <MyComponent />
+      <Root />
         </MuiThemeProvider>
     </div>
   );
