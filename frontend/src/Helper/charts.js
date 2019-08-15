@@ -1,4 +1,3 @@
-import React from 'react'
 import 'bootstrap/dist/css/bootstrap.css';
 import * as d3 from 'd3'
 import $ from 'jquery'
@@ -80,15 +79,16 @@ export const paint_topicbars = (second=false, data, topics) => {
 
     for (var i in topic_list){
         var topic = topic_list[i];
+        var ldaTopicBar;
         if(second){
-            var ldaTopicBar = $('.lda-second-topic-bar-template').clone();
+            ldaTopicBar = $('.lda-second-topic-bar-template').clone();
             ldaTopicBar.toggleClass('lda-second-topic-bar-template lda-second-topic-bar template');
             ldaTopicBar.attr("id", "second" + topic +"_entries_distri");
             ldaTopicBar.find('.lda-second-topic-bar-name').text(topic);
             ldaTopicBar.find('.lda-second-topic-bar-name').attr('title', topics_data[topic][top_words_key].join());
             ldaTopicBar.appendTo('#lda-second-topic-bars');
         }else{
-            var ldaTopicBar = $('.lda-topic-bar-template').clone();
+            ldaTopicBar = $('.lda-topic-bar-template').clone();
             ldaTopicBar.toggleClass('lda-topic-bar-template lda-topic-bar template');
             ldaTopicBar.attr("id", topic +"_entries_distri");
             ldaTopicBar.find('.lda-topic-bar-name').text(topic);
@@ -130,10 +130,10 @@ export const paint_topicbars = (second=false, data, topics) => {
             .data(topic_datasets[topic])
             .enter()
             .append("rect")
-            .attr("x", function(d, i) {
+            .attr("x", (d, i) => {
                 return xScale(i);
             })
-            .attr("y", function(d) {
+            .attr("y", (d) => {
                 return h-barHeightPadding - yScale(d);  //Height minus data value
             })
             .attr("width", w / topic_datasets[topic].length - barPadding)

@@ -1,6 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.css';
 import getCookie from './Helper/getCookie'
-import {buildDictionaryBarData, buildTopicBarData, paint_topicbars} from './Helper/charts'
+import {buildDictionaryBarData, buildTopicBarData} from './Helper/charts'
 import React from 'react'
 import TextField from 'material-ui/TextField'
 import RaisedButton from 'material-ui/RaisedButton'

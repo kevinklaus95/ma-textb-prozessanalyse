@@ -20,8 +20,8 @@ class Root extends React.Component {
             end: "2019-01-01",
             config: {
                 numberOfTopics: 3,
-                dirichletAlpha: 0.1,
-                dirichletEta: 0.01,
+                dirichletAlpha: 0.00001,
+                dirichletEta: 0.00001,
                 numberOfIterations: 1500,
                 randomSeed: 1,
                 numberOfDisplayedTopTopics: 3,
