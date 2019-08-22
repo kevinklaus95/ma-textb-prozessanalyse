@@ -22,7 +22,7 @@ const CustomAnalysis = (props) => {
                 "X-CSRFToken": getCookie('csrftoken'),
             }
         }
-        axios.post('start-custom-analysis/', {
+        axios.post('api/start-custom-analysis/', {
             customText: this.state.customText,
             config: this.state.config
         }, config)

@@ -25,7 +25,7 @@ const ConfigurationPanel = (props) => {
                 "X-CSRFToken": getCookie('csrftoken'),
             }
         }
-        axios.post('start-analysis/', {
+        axios.post('api/start-analysis/', {
             chosenCaseId: state.chosenCaseId,
             start: state.start,
             end: state.end,
@@ -67,7 +67,7 @@ const ConfigurationPanel = (props) => {
                 "X-CSRFToken": getCookie('csrftoken'),
             }
         }
-        axios.post('start-analysis/', {
+        axios.post('api/start-analysis/', {
             chosenCaseId: state.secondCaseId,
             start: state.start,
             end: state.end,

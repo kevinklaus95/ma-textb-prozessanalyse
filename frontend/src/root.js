@@ -60,7 +60,7 @@ class Root extends React.Component {
      */
 
     componentDidMount(){
-        axios.get('distinct-project-ids/')
+        axios.get('api/distinct-project-ids/')
             .then(res => this.setState({caseIdOptions: res.data.project_ids}, () => {
                 this.setState({chosenCaseId: 142, secondCaseId: 405})
             }))

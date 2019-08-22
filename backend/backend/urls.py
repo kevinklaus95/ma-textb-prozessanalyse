@@ -8,8 +8,7 @@ router.register(r'hours', views.HoursView, 'hours')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include(router.urls)),
-    path('distinct-project-ids/', views.distinct_project_ids),
-    path('start-analysis/', views.start_analysis),
-    path('start-custom-analysis/', views.start_custom_analysis)
+    path('api/distinct-project-ids/', views.distinct_project_ids),
+    path('api/start-analysis/', views.start_analysis),
+    path('api/start-custom-analysis/', views.start_custom_analysis)
 ]
