@@ -1,6 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.css';
 import getCookie from './Helper/getCookie'
-import {buildDictionaryBarData, buildTopicBarData} from './Helper/charts'
+import {buildEmotionDictionaryBarData, buildContentDictionaryBarData, buildTopicBarData} from './Helper/charts'
 import React from 'react'
 import TextField from 'material-ui/TextField'
 import RaisedButton from 'material-ui/RaisedButton'
@@ -30,11 +30,13 @@ const CustomAnalysis = (props) => {
             .then(res => this.setState({
                 comments: res.data['hours'],
                 ldaResult: res.data['lda_result'],
-                dictionaryResult: res.data['dictionary_result'],
+                emotionDictionaryResult: res.data['emotion_dictionary_result'],
+                contentDictionaryResult: res.data['content_dictionary_result'],
                 loading: false
             }, () => {
                 buildTopicBarData(res.data['lda_result'].entries, res.data['lda_result'].topics, false, setState, state)
-                buildDictionaryBarData(res.data['dictionary_result'], false, setState, state)
+                buildEmotionDictionaryBarData(res.data['emotion_dictionary_result'], false, setState, state)
+                buildContentDictionaryBarData(res.data['content_dictionary_result'], false, setState, state)
             }))
             .catch(err => {this.setState({loading: false}); alert(err)});
     }

@@ -15,11 +15,12 @@ def prepare_word_for_url(word):
 
 
 class Command(BaseCommand):
-    help = 'Enriches the current dictionary by calling OpenTheSaurus API. Result is saved to woerterbuch_new.csv'
+    help = \
+        'Enriches the current dictionary by calling OpenTheSaurus API. Result is saved to woerterbuch_emotion_angereichert.csv'
 
     def handle(self, *args, **options):
         # Wörterbuch einlesen
-        df = pandas.read_csv('analyzer/woerterbuch.csv')
+        df = pandas.read_csv('analyzer/woerterbuch_emotion.csv')
 
         # Startset besteht aus den Saatwörtern im Wörterbuch
         warm_words = [str(word[1]) for word in df['Warm'].iteritems()]
@@ -114,8 +115,6 @@ class Command(BaseCommand):
         warm_words.insert(0, "Warm")
 
         # Schreibe neue Listen in CSV
-        with open('analyzer/woerterbuch_angereichert.csv', 'w') as f:
+        with open('analyzer/woerterbuch_emotion_angereichert.csv', 'w') as f:
             writer = csv.writer(f)
             writer.writerows(zip(warm_words, cold_words))
-
-# TODO Handling von gemeinsamen Wörtern

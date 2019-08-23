@@ -118,16 +118,20 @@ def start_analysis(request):
                          stopword_language='german' if config['removeStopwords'] else '',
                          word_min_length=int(config['minimalWordLength']),
                          filter_numbers=config['removeNumbers'],
-                         dictionary=config['dictionary'],
+                         emotion_dictionary=config['emotionDictionary'],
+                         content_dictionary=config['contentDictionary'],
                          positive_text='')
 
     # Antwort ans Frontend mit den analysierten Texten, den Ergebnissen und den gefundenen Wörtern im Wörterbuch
     return Response(
         {'hours': hours,
          'lda_result': result['lda_result'],
-         'dictionary_result': result['dictionary_result'],
+         'emotion_dictionary_result': result['emotion_dictionary_result'],
+         'content_dictionary_result': result['content_dictionary_result'],
          'warm_words': result['warm_words'],
-         'cold_words': result['cold_words']
+         'cold_words': result['cold_words'],
+         'home_words': result['home_words'],
+         'school_words': result['school_words']
          })
 
 # Ähnlicher Aufbau zu oberer Funktion, hier allerdings mit Freitexten ohne Datenbank-Anbindung für Analysen, die on-the-
@@ -153,15 +157,20 @@ def start_custom_analysis(request):
                          stopword_language='german' if config['removeStopwords'] else '',
                          word_min_length=int(config['minimalWordLength']),
                          filter_numbers=config['removeNumbers'],
-                         dictionary=config['dictionary'],
+                         emotion_dictionary=config['emotionDictionary'],
+                         content_dictionary=config['contentDictionary'],
                          positive_text='')
 
     return Response(
         {'hours': [{'id': 0, 'comment': custom_text, 'reflection': ''}],
          'lda_result': result['lda_result'],
-         'dictionary_result': result['dictionary_result'],
+         'emotion_dictionary_result': result['emotion_dictionary_result'],
+         'content_dictionary_result': result['content_dictionary_result'],
          'warm_words': result['warm_words'],
-         'cold_words': result['cold_words']})
+         'cold_words': result['cold_words'],
+         'home_words': result['home_words'],
+         'school_words': result['school_words']
+         })
 
 class HoursView(viewsets.ModelViewSet):
     serializer_class = HoursSerializer

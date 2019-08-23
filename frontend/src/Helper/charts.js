@@ -4,16 +4,30 @@ import $ from 'jquery'
 import 'bootstrap/dist/css/bootstrap.css';
 
 /* Das Konstruieren der Daten für das Zeichnen der Säulendiagramme der Ergebnisse der Wörterbuchanalyse. */
-export const buildDictionaryBarData = (result=undefined, second=false, setState) => {
+export const buildEmotionDictionaryBarData = (result=undefined, second=false, setState) => {
     setState({loading: true})
 
     let bar_data = result.map((entry) => {
-        return {name: entry.id, Kalt: entry.counters.Kalt, Warm: entry.counters.Warm}
+        return {name: entry.id, Kalt: entry.emotion_counters.Kalt, Warm: entry.emotion_counters.Warm}
     })
     if(second){
-        setState({secondDictionaryBarData: bar_data, loading: false})
+        setState({secondEmotionDictionaryBarData: bar_data, loading: false})
     }else{
-        setState({dictionaryBarData: bar_data, loading: false})
+        setState({emotionDictionaryBarData: bar_data, loading: false})
+    }
+}
+
+/* Das Konstruieren der Daten für das Zeichnen der Säulendiagramme der Ergebnisse der Wörterbuchanalyse. */
+export const buildContentDictionaryBarData = (result=undefined, second=false, setState) => {
+    setState({loading: true})
+
+    let bar_data = result.map((entry) => {
+        return {name: entry.id, Bildungsort: entry.content_counters.Bildungsort, Lebensort: entry.content_counters.Lebensort}
+    })
+    if(second){
+        setState({secondContentDictionaryBarData: bar_data, loading: false})
+    }else{
+        setState({contentDictionaryBarData: bar_data, loading: false})
     }
 }
 

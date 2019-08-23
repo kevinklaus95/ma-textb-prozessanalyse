@@ -1,5 +1,6 @@
 import React from 'react'
 import {Tabs, Tab} from 'material-ui/Tabs'
+import {paint_topicbars} from './Helper/charts'
 import {
     BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ReferenceLine,
 } from 'recharts';
@@ -69,14 +70,14 @@ const Results = (props) => {
         )
     }
 
-    // Die Darstellung der gefundenen Wörter bei der Wörterbuchanalyse, vereint Erstanalyse und Vergleichsfall
-    const WordLists = () => {
+    // Die Darstellung der gefundenen Emotions-Wörter bei der Wörterbuchanalyse, vereint Erstanalyse und Vergleichsfall
+    const EmotionWordLists = () => {
         return(
             <div style={{marginBottom: '20px'}}>
                 <div style={{marginLeft: '20px', marginRight: '20px', color: 'red'}}>
                     Warm:
                     <br/>
-                    {state.dictionaryResult && state.resultWarmWords.map((word) => {
+                    {state.emotionDictionaryResult && state.resultWarmWords.map((word) => {
                         return (
                             <span>{word}, </span>)
                     })}
@@ -85,7 +86,32 @@ const Results = (props) => {
                     <br/>
                     Kalt:
                     <br/>
-                    {state.dictionaryResult && state.resultColdWords.map((word) => {
+                    {state.emotionDictionaryResult && state.resultColdWords.map((word) => {
+                        return (
+                            <span>{word}, </span>)
+                    })}
+                </div>
+            </div>
+        )
+    }
+
+    // Die Darstellung der gefundenen Inhalts-Wörter bei der Wörterbuchanalyse, vereint Erstanalyse und Vergleichsfall
+    const ContentWordLists = () => {
+        return(
+            <div style={{marginBottom: '20px'}}>
+                <div style={{marginLeft: '20px', marginRight: '20px', color: 'red'}}>
+                    Lebensort:
+                    <br/>
+                    {state.contentDictionaryResult && state.resultHomeWords.map((word) => {
+                        return (
+                            <span>{word}, </span>)
+                    })}
+                </div>
+                <div style={{marginLeft: '20px', marginRight: '20px', color: 'blue'}}>
+                    <br/>
+                    Bildungsort:
+                    <br/>
+                    {state.contentDictionaryResult && state.resultSchoolWords.map((word) => {
                         return (
                             <span>{word}, </span>)
                     })}
@@ -97,15 +123,15 @@ const Results = (props) => {
     // Darstellung des Ergebnisses der Wörterbuchanalyse im gestackten Säulendiagramm.
     // Hier wurde sich für Recharts entschieden, aufgrund der möglichen Darstellungsweise von warmen und kalten
     // Ergebnissen in einer Säule mit unterschiedlichen Werten.
-    const FirstBarChart = (props) => {
+    const EmotionFirstBarChart = (props) => {
         return(
             <div className={props.className ? props.className : ''}>
-                {Object.keys(state.dictionaryBarData).length ?
+                {Object.keys(state.emotionDictionaryBarData).length ?
                     <div className={"center"}>
                         <BarChart
                             width={600}
                             height={400}
-                            data={state.dictionaryBarData}
+                            data={state.emotionDictionaryBarData}
                             stackOffset="sign"
                             margin={{
                                 top: 5, right: 30, left: 20, bottom: 5,
@@ -126,15 +152,44 @@ const Results = (props) => {
         )
     }
 
+    const ContentFirstBarChart = (props) => {
+        return(
+            <div className={props.className ? props.className : ''}>
+                {Object.keys(state.contentDictionaryBarData).length ?
+                    <div className={"center"}>
+                        <BarChart
+                            width={600}
+                            height={400}
+                            data={state.contentDictionaryBarData}
+                            stackOffset="sign"
+                            margin={{
+                                top: 5, right: 30, left: 20, bottom: 5,
+                            }}
+                        >
+                            <CartesianGrid strokeDasharray="3 3"/>
+                            <XAxis dataKey="name"/>
+                            <YAxis/>
+                            <Tooltip/>
+                            <Legend/>
+                            <ReferenceLine y={0} stroke="#000"/>
+                            <Bar dataKey="Lebensort" fill="#F2314B" stackId="stack"/>
+                            <Bar dataKey="Bildungsort" fill="#0F5B94" stackId="stack"/>
+                        </BarChart>
+                    </div>
+                    : <div/>}
+            </div>
+        )
+    }
+
     // Das gleiche für den Vergleichsfall
-    const SecondBarChart = () => {
+    const EmotionSecondBarChart = () => {
         return(
             <div className={"col-md-6"}>
-                {Object.keys(state.secondDictionaryBarData).length ?
+                {Object.keys(state.secondEmotionDictionaryBarData).length ?
                     <BarChart
                         width={600}
                         height={400}
-                        data={state.secondDictionaryBarData}
+                        data={state.secondEmotionDictionaryBarData}
                         stackOffset="sign"
                         margin={{
                             top: 5, right: 30, left: 20, bottom: 5,
@@ -154,13 +209,46 @@ const Results = (props) => {
         )
     }
 
+    const ContentSecondBarChart = () => {
+        return(
+            <div className={"col-md-6"}>
+                {Object.keys(state.secondContentDictionaryBarData).length ?
+                    <BarChart
+                        width={600}
+                        height={400}
+                        data={state.secondContentDictionaryBarData}
+                        stackOffset="sign"
+                        margin={{
+                            top: 5, right: 30, left: 20, bottom: 5,
+                        }}
+                    >
+                        <CartesianGrid strokeDasharray="3 3"/>
+                        <XAxis dataKey="name"/>
+                        <YAxis/>
+                        <Tooltip/>
+                        <Legend/>
+                        <ReferenceLine y={0} stroke="#000"/>
+                        <Bar dataKey="Lebensort" fill="#F2314B" stackId="stack"/>
+                        <Bar dataKey="Bildungsort" fill="#0F5B94" stackId="stack"/>
+                    </BarChart>
+                    : <div/>}
+            </div>
+        )
+    }
+
     // Mithilfe von Tabs kann zwischen den Ergebnissen der LDA- und Wörterbuchanalyse hin- und hergewechselt werden
     return (
         <Tabs onChange={(value) => {
             setState({selectedTab: value})
         }}>
             <Tab label={"LDA"} value={"lda"} onActive={() => {
-                setState({selectedTab: 'lda'})
+                setState({selectedTab: 'lda'}, () => {
+                    // Zeichne LDA nochmals, da bei Tabwechsel sonst nicht nochmal gerendert wird
+                    paint_topicbars(false, state.topicbarData, state.ldaResult.topics)
+                    if(state.second){
+                        paint_topicbars(true, state.topicbarData, state.ldaResult.topics)
+                    }
+                })
             }}>
                 {!state.second ?
                     <div>
@@ -175,20 +263,38 @@ const Results = (props) => {
                     </div>
                 }
             </Tab>
-            <Tab label={"Wörterbuch"} value={"dictionary"} onActive={() => {
-                setState({selectedTab: 'dictionary'})
+            <Tab label={"Inhalts-Wörterbuch"} value={"contentDictionary"} onActive={() => {
+                setState({selectedTab: 'contentDictionary'})
             }}>
                 {state.second ?
                     <div className={"row"}>
-                        <WordLists/>
-                        <FirstBarChart className={"col-md-6"}/>
-                        <SecondBarChart/>
+                        <ContentWordLists/>
+                        <ContentFirstBarChart className={"col-md-6"}/>
+                        <ContentSecondBarChart/>
                     </div>
 
                     :
                     <div>
-                        <WordLists/>
-                        <FirstBarChart/>
+                        <ContentWordLists/>
+                        <ContentFirstBarChart/>
+                    </div>}
+
+                <hr/>
+            </Tab>
+            <Tab label={"Emotions-Wörterbuch"} value={"emotionDictionary"} onActive={() => {
+                setState({selectedTab: 'emotionDictionary'})
+            }}>
+                {state.second ?
+                    <div className={"row"}>
+                        <EmotionWordLists/>
+                        <EmotionFirstBarChart className={"col-md-6"}/>
+                        <EmotionSecondBarChart/>
+                    </div>
+
+                    :
+                    <div>
+                        <EmotionWordLists/>
+                        <EmotionFirstBarChart/>
                     </div>}
 
                 <hr/>

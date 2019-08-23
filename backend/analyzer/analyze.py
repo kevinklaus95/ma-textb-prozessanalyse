@@ -22,7 +22,8 @@ def analyze(content,
             stopword_language='',
             word_min_length=0,
             filter_numbers=False,
-            dictionary='simple',
+            emotion_dictionary='simple',
+            content_dictionary='simple',
             positive_text=''):
     '''
     Does lda analyzes on lesson content
@@ -140,13 +141,13 @@ def analyze(content,
             output['topics']['Topic' + str(i)]['is_normalized']['normalized'] = True
 
     # LDA Analyse abgeschlossen, Wörterbuchanalyse startet
-    print('LDA Done, starting Dictionary')
+    print('LDA Done, starting Emotion Dictionary')
 
     # Wörterbuch einlesen - abhängig vom gewählten Parameter entweder das einfache oder das angereicherte WB
-    if dictionary == 'simple':
-        df = pandas.read_csv('analyzer/woerterbuch.csv')
+    if emotion_dictionary == 'simple':
+        df = pandas.read_csv('analyzer/woerterbuch_emotion.csv')
     else:
-        df = pandas.read_csv('analyzer/woerterbuch_angereichert.csv')
+        df = pandas.read_csv('analyzer/woerterbuch_emotion_angereichert.csv')
 
     # Datengrundlage auch hier die vorbereiteten Daten der LDA-Analyse, kein neues Preprocessing notwendig
     entry_text_dict = data.entry_text_dict
@@ -190,10 +191,67 @@ def analyze(content,
                 print("Kalt:", text)
                 counters['Kalt'] -= 1
                 cold_words.append(text)
-        entry['counters'] = counters
+        entry['emotion_counters'] = counters
 
     # Wörterbuchanalyse abgeschlossen
-    print('Dictionary done!')
+    print('Emotion Dictionary done, starting Content Dictionary...')
+
+    # Wörterbuch einlesen - abhängig vom gewählten Parameter entweder das einfache oder das angereicherte WB
+    if content_dictionary == 'simple':
+        df = pandas.read_csv('analyzer/woerterbuch_inhalt.csv')
+    else:
+        df = pandas.read_csv('analyzer/woerterbuch_inhalt_angereichert.csv')
+
+    # Datengrundlage auch hier die vorbereiteten Daten der LDA-Analyse, kein neues Preprocessing notwendig
+    entry_text_dict = data.entry_text_dict
+
+    # aus den Spalten der Wörterbücher sollen Dicts gemacht werden, die das Auslesen der Tokens extrem erleichtern
+    school_word_dict = pandas.Series('Bildungsort', index=df.Bildungsort).to_dict()
+    home_word_dict = pandas.Series('Lebensort', index=df.Lebensort).to_dict()
+
+    # initiiere Listen, die später mit gefundenen Wörtern gefüllt werden
+    school_words = list()
+    home_words = list()
+
+    # für jeden Eintrag (Zeitspannen)
+    for entry in content:
+
+        id = entry['id']
+
+        # finde den entsprechenden Text in den vorbereiteten Texten
+        # try - except ist für den Vergleichsfall - in manchen Fällen kann hier eine ID nicht vergeben sein.
+        try:
+            words = entry_text_dict[id]
+        except KeyError:
+            words = []
+
+        # initiiere Counter für die Anzahl der gefundenen kalten und warmen Wort
+        counters = {'Lebensort': 0, 'Bildungsort': 0}
+
+        # für jeden Token im Dokument
+        for token in words:
+            text = str(token)
+            # Prüfe, ob die Spalte der warmen Wörter im Wörterbuch das Wort enthält
+            # dazu wird lediglich gecheckt, ob der Key im Dict vorhanden ist, womit eine performante Analyse
+            # auch bei großen Wörterbüchern garantiert werden kann
+            if text in home_word_dict:
+                print("Lebensort:", text)
+                # Counter um 1 erhöhen und das Wort in die Liste der gefundenen Wörter hinzufügen
+                counters['Lebensort'] += 1
+                home_words.append(text)
+            # Für kalte Wörter genauso wiederholen
+            if text in school_word_dict:
+                print("Bildungsort:", text)
+                counters['Bildungsort'] -= 1
+                school_words.append(text)
+        entry['content_counters'] = counters
 
     # Ergebnis zurückliefern
-    return dict(lda_result=output, dictionary_result=content, cold_words=cold_words, warm_words=warm_words)
+    return dict(lda_result=output,
+                emotion_dictionary_result=content,
+                content_dictionary_result=content,
+                cold_words=cold_words,
+                warm_words=warm_words,
+                school_words=school_words,
+                home_words=home_words
+                )

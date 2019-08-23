@@ -33,23 +33,30 @@ class Root extends React.Component {
                 removeStopwords: true,
                 minimalWordLength: 3,
                 timespan: 14,
-                dictionary: 'simple',
+                emotionDictionary: 'simple',
+                contentDictionary: 'simple',
                 selectedTab: 'lda'
             },
             comments: [],
             ldaResult: null,
             secondldaResult: null,
-            dictionaryResult: null,
-            secondDictionaryResult: null,
+            emotionDictionaryResult: null,
+            secondEmotionDictionaryResult: null,
+            contentDictionaryResult: null,
+            secondContentDictionaryResult: null,
             loading: false,
             topicbarData: {},
             secondTopicbarData: {},
-            dictionaryBarData: {},
-            secondDictionaryBarData: {},
+            emotionDictionaryBarData: {},
+            secondEmotionDictionaryBarData: {},
+            contentDictionaryBarData: {},
+            secondContentDictionaryBarData: {},
             second: false,
             customText: '',
             resultColdWords: [],
-            resultWarmWords: []
+            resultWarmWords: [],
+            resultSchoolWords: [],
+            resultHomeWords: []
         };
     }
 

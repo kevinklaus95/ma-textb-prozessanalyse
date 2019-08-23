@@ -6,7 +6,7 @@ import RaisedButton from 'material-ui/RaisedButton'
 import DatePicker from 'material-ui/DatePicker'
 import 'bootstrap/dist/css/bootstrap.css';
 import getCookie from './Helper/getCookie'
-import {buildDictionaryBarData, buildTopicBarData} from './Helper/charts'
+import {buildEmotionDictionaryBarData, buildContentDictionaryBarData, buildTopicBarData} from './Helper/charts'
 import axios from "axios";
 import moment from 'moment'
 import 'bootstrap/dist/css/bootstrap.css';
@@ -38,15 +38,19 @@ const ConfigurationPanel = (props) => {
                     setState({
                     comments: res.data['hours'],
                     ldaResult: res.data['lda_result'],
-                    dictionaryResult: res.data['dictionary_result'],
+                    emotionDictionaryResult: res.data['emotion_dictionary_result'],
+                    contentDictionaryResult: res.data['content_dictionary_result'],
                     resultWarmWords: res.data['warm_words'],
                     resultColdWords: res.data['cold_words'],
+                    resultHomeWords: res.data['home_words'],
+                    resultSchoolWords: res.data['school_words'],
                     loading: false
                 }, () => {
                         // anschließend die Daten für die Charts vorbereiten
                     buildTopicBarData(res.data['lda_result']['entries'],
                         res.data['lda_result']['topics'], false, setState, state)
-                    buildDictionaryBarData(res.data['dictionary_result'], false, setState)
+                    buildEmotionDictionaryBarData(res.data['emotion_dictionary_result'], false, setState)
+                    buildContentDictionaryBarData(res.data['content_dictionary_result'], false, setState)
                 })
                 }else{
                     // Bei Status 204 lagen keine Texte vor und es konnte nichts analysiert werden.
@@ -78,12 +82,16 @@ const ConfigurationPanel = (props) => {
                 second: true,
                 resultWarmWords: state.resultWarmWords.concat(res.data['warm_words']),
                 resultColdWords: state.resultColdWords.concat(res.data['cold_words']),
+                resultHomeWords: state.resultHomeWords.concat(res.data['home_words']),
+                resultSchoolWords: state.resultSchoolWords.concat(res.data['school_words']),
                 secondLdaResult: res.data['lda_result'],
-                secondDictionaryResult: res.data['dictionary_result'],
+                secondEmotionDictionaryResult: res.data['emotion_dictionary_result'],
+                secondContentDictionaryResult: res.data['content_dictionary_result'],
                 loading: false
             }, () => {
                 buildTopicBarData(res.data['lda_result']['entries'], res.data['lda_result']['topics'], true, setState, state)
-                buildDictionaryBarData(res.data['dictionary_result'], true, setState)
+                buildEmotionDictionaryBarData(res.data['emotion_dictionary_result'], true, setState)
+                buildContentDictionaryBarData(res.data['content_dictionary_result'], true, setState)
             }))
             .catch(err => {setState({loading: false}); alert(err)});
     }
@@ -163,9 +171,15 @@ const ConfigurationPanel = (props) => {
                 <TextField floatingLabelText={"Anzahl der Iterationen"} onChange={(e, newValue) => {
                     setConfig('numberOfIterations', newValue)
                 }} value={state.config.numberOfIterations}/>
-                <SelectField floatingLabelText={"Wörterbuch"} onChange={(e, index, newValue) => {
-                    setConfig('dictionary', newValue)
-                }} value={state.config.dictionary}>
+                <SelectField floatingLabelText={"Inhalts-Wörterbuch"} onChange={(e, index, newValue) => {
+                    setConfig('contentDictionary', newValue)
+                }} value={state.config.contentDictionary}>
+                    <MenuItem primaryText={"Einfach"} value={'simple'}/>
+                    <MenuItem primaryText={"Angereichert"} value={'enriched'}/>
+                </SelectField>
+                <SelectField floatingLabelText={"Emotions-Wörterbuch"} onChange={(e, index, newValue) => {
+                    setConfig('emotionDictionary', newValue)
+                }} value={state.config.emotionDictionary}>
                     <MenuItem primaryText={"Einfach"} value={'simple'}/>
                     <MenuItem primaryText={"Angereichert"} value={'enriched'}/>
                 </SelectField>
