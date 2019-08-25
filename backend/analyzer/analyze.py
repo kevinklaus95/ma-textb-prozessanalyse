@@ -242,7 +242,7 @@ def analyze(content,
             # Für kalte Wörter genauso wiederholen
             if text in school_word_dict:
                 print("Bildungsort:", text)
-                counters['Bildungsort'] -= 1
+                counters['Bildungsort'] += 1
                 school_words.append(text)
         entry['content_counters'] = counters
 

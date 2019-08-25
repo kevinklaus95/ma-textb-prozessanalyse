@@ -156,7 +156,7 @@ const Results = (props) => {
         return(
             <div className={props.className ? props.className : ''}>
                 {Object.keys(state.contentDictionaryBarData).length ?
-                    <div className={"center"}>
+                    <div className={"row"}>
                         <BarChart
                             width={600}
                             height={400}
@@ -173,6 +173,22 @@ const Results = (props) => {
                             <Legend/>
                             <ReferenceLine y={0} stroke="#000"/>
                             <Bar dataKey="Lebensort" fill="#F2314B" stackId="stack"/>
+                        </BarChart>
+                        <BarChart
+                            width={600}
+                            height={400}
+                            data={state.contentDictionaryBarData}
+                            stackOffset="sign"
+                            margin={{
+                                top: 5, right: 30, left: 20, bottom: 5,
+                            }}
+                        >
+                            <CartesianGrid strokeDasharray="3 3"/>
+                            <XAxis dataKey="name"/>
+                            <YAxis/>
+                            <Tooltip/>
+                            <Legend/>
+                            <ReferenceLine y={0} stroke="#000"/>
                             <Bar dataKey="Bildungsort" fill="#0F5B94" stackId="stack"/>
                         </BarChart>
                     </div>
@@ -213,24 +229,42 @@ const Results = (props) => {
         return(
             <div className={"col-md-6"}>
                 {Object.keys(state.secondContentDictionaryBarData).length ?
-                    <BarChart
-                        width={600}
-                        height={400}
-                        data={state.secondContentDictionaryBarData}
-                        stackOffset="sign"
-                        margin={{
-                            top: 5, right: 30, left: 20, bottom: 5,
-                        }}
-                    >
-                        <CartesianGrid strokeDasharray="3 3"/>
-                        <XAxis dataKey="name"/>
-                        <YAxis/>
-                        <Tooltip/>
-                        <Legend/>
-                        <ReferenceLine y={0} stroke="#000"/>
-                        <Bar dataKey="Lebensort" fill="#F2314B" stackId="stack"/>
-                        <Bar dataKey="Bildungsort" fill="#0F5B94" stackId="stack"/>
-                    </BarChart>
+                    <div>
+                        <BarChart
+                            width={600}
+                            height={400}
+                            data={state.secondContentDictionaryBarData}
+                            stackOffset="sign"
+                            margin={{
+                                top: 5, right: 30, left: 20, bottom: 5,
+                            }}
+                        >
+                            <CartesianGrid strokeDasharray="3 3"/>
+                            <XAxis dataKey="name"/>
+                            <YAxis/>
+                            <Tooltip/>
+                            <Legend/>
+                            <ReferenceLine y={0} stroke="#000"/>
+                            <Bar dataKey="Lebensort" fill="#F2314B" stackId="stack"/>
+                        </BarChart>
+                        <BarChart
+                            width={600}
+                            height={400}
+                            data={state.secondContentDictionaryBarData}
+                            stackOffset="sign"
+                            margin={{
+                                top: 5, right: 30, left: 20, bottom: 5,
+                            }}
+                        >
+                            <CartesianGrid strokeDasharray="3 3"/>
+                            <XAxis dataKey="name"/>
+                            <YAxis/>
+                            <Tooltip/>
+                            <Legend/>
+                            <ReferenceLine y={0} stroke="#000"/>
+                            <Bar dataKey="Bildungsort" fill="#0F5B94" stackId="stack"/>
+                        </BarChart>
+                    </div>
                     : <div/>}
             </div>
         )
