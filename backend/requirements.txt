@@ -5,7 +5,7 @@ cymem==2.0.2
 #de-core-news-sm==2.1.0
 Django==2.2.3
 django-cors-headers==3.0.2
-djangorestframework==3.9.4
+djangorestframework==3.11.2
 fuzzywuzzy==0.17.0
 idna==2.8
 lda==1.1.0
